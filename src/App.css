@@ -1,5 +1,5 @@
 .App {
-  
+
 }
 
 .Header {
@@ -94,22 +94,36 @@
 }
 
 .selectedCountry {
+  display: flex;
   padding-right: 3%;
   padding-left: 3%;
+  padding-top: 3%;
+}
+
+.flexOne {
+  flex: 1;
+}
+
+.fontBold {
+  font-weight: bold;
 }
 
 .selectedFlagContainer {
-  margin-top: 3%;
-  margin-bottom: 3%;
+  margin-bottom: 7%; 
 }
 
 .selectedFlag {
-  width: 40%;
-  height: 200px;
+  width: 80%;
+  height: 250px;
+}
+
+.selectedName {
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .back {
-  padding: 1%;
-  padding-left: 2%;
-  padding-right: 2%;
+  padding: 2%;
+  padding-left: 4%;
+  padding-right: 4%;
 }

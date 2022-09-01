@@ -15,13 +15,15 @@ function App() {
   const storeCountryDetails = (data) => {
     let storeDetails = [];
     storeDetails = data.map((countryDetails) => {
+      // const nativeName = countryDetails ? Object.keys(countryDetails.name.nativeName)[0] : '';
+      // console.log('daaaa', nativeName);
       return {
         name: countryDetails.name.common,
         capital: countryDetails.capital,
         flag: countryDetails.flags.png,
         population: countryDetails.population,
         region: countryDetails.region,
-        nativeName: countryDetails.nativeName,
+        // nativeName: countryDetails.name.nativeName[nativeName],
         subregion: countryDetails.subregion,
         tld: countryDetails.tld,
       }
@@ -43,7 +45,7 @@ function App() {
 
   useEffect(() => {
     makeApiCall('https://restcountries.com/v3.1/all');
-  });
+  }, []);
 
   const onSelectRegionList = (region) => {
     makeApiCall(`https://restcountries.com/v3.1/region/${region}`);
