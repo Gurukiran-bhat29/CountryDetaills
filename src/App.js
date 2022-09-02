@@ -13,26 +13,56 @@ function App() {
   }
 
   const storeCountryDetails = (data) => {
-    let storeDetails = [];
-    storeDetails = data.map((countryDetails) => {
-      // const nativeName = countryDetails ? Object.keys(countryDetails.name.nativeName)[0] : '';
-      // console.log('daaaa', nativeName);
+    let storeDetails = data.map((countryDetails) => {
+
+      //languages search 'fra' in search and for currencies choose one region
+      console.log('daaaa', countryDetails);
+      const nativeName =
+        countryDetails.name.nativeName
+          ? Object.keys(countryDetails.name.nativeName)[0]
+          : '';
+      const currencies =
+        countryDetails.currencies
+          ? Object.keys(countryDetails.currencies)
+          : '';
+      let currencyList = currencies && currencies.map((currency) => {
+        return [
+          countryDetails.currencies[currency].name
+        ]
+      })
+      const languages =
+        countryDetails.currencies
+          ? Object.keys(countryDetails.languages)
+          : '';
+      console.log('annggg', languages);
+      let languageList = languages && languages.map((currency) => {
+        return [
+          countryDetails.languages[currency]
+        ]
+      })
       return {
         name: countryDetails.name.common,
-        capital: countryDetails.capital,
+        capital:
+          countryDetails.capital
+            ? countryDetails.capital[0]
+            : '',
         flag: countryDetails.flags.png,
         population: countryDetails.population,
         region: countryDetails.region,
-        // nativeName: countryDetails.name.nativeName[nativeName],
+        nativeName:
+          nativeName
+            ? countryDetails.name.nativeName[nativeName].common
+            : '',
         subregion: countryDetails.subregion,
         tld: countryDetails.tld,
+        currencies: currencyList,
+        languages: languageList
       }
     })
     setCountryDetails(storeDetails);
   }
 
   const getCountryOnSearch = (event) => {
-    console.log('abc', event.target.value);
     setSearchCountry(event.target.value);
     makeApiCall(`https://restcountries.com/v3.1/name/${event.target.value}`);
   }
@@ -110,9 +140,10 @@ function App() {
             </div>
           </div>
           <div className='countryListContainer'>
-            {countryDetails && countryDetails.map((data) => {
+            {countryDetails && countryDetails.map((data, index) => {
               return (
                 <Counries
+                  key={index}
                   data={data}
                   callBack={(details) => getSelectedCountry(details)}
                 />
