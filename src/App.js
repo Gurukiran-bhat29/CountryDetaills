@@ -14,9 +14,6 @@ function App() {
 
   const storeCountryDetails = (data) => {
     let storeDetails = data.map((countryDetails) => {
-
-      //languages search 'fra' in search and for currencies choose one region
-      console.log('daaaa', countryDetails);
       const nativeName =
         countryDetails.name.nativeName
           ? Object.keys(countryDetails.name.nativeName)[0]
@@ -34,7 +31,6 @@ function App() {
         countryDetails.currencies
           ? Object.keys(countryDetails.languages)
           : '';
-      console.log('annggg', languages);
       let languageList = languages && languages.map((currency) => {
         return [
           countryDetails.languages[currency]
