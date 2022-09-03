@@ -1,6 +1,8 @@
 import './App.css';
 
 function selectedCountry({ details, onClickBack }) {
+  const currencyLength = details.currencies.length - 1;
+  const languageLength = details.languages.length - 1;
   return (
     <div className="selectedCountry">
       <div className='flexOne'>
@@ -44,11 +46,19 @@ function selectedCountry({ details, onClickBack }) {
             </label>
             <label className='displayBlock'>
               <span className='fontBold'>Currencies:</span>
-              {details.currencies.map((currency) => ` ${currency}`)}
+              {details.currencies.map((currency, index) =>
+                currencyLength !== index
+                  ? ` ${currency},`
+                  : ` ${currency}`
+              )}
             </label>
             <label className='displayBlock'>
               <span className='fontBold'>Languages:</span>
-              {details.languages.map((language) => ` ${language}`)}
+              {details.languages.map((language, index) =>
+                languageLength !== index
+                  ? ` ${language},`
+                  : ` ${language}`
+              )}
             </label>
           </div>
         </div>
