@@ -44,11 +44,11 @@ function selectedCountry({ details, onClickBack }) {
             </label>
             <label className='displayBlock'>
               <span className='fontBold'>Currencies:</span>
-              {details.currencies.map((currency) => `${currency} `)}
+              {details.currencies.map((currency) => ` ${currency}`)}
             </label>
             <label className='displayBlock'>
               <span className='fontBold'>Languages:</span>
-              {details.languages.map((language) => `${language} `)}
+              {details.languages.map((language) => ` ${language}`)}
             </label>
           </div>
         </div>
