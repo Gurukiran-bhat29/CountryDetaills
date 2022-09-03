@@ -79,6 +79,15 @@
   font-weight: bold;
 }
 
+.displayBlock {
+  display: block;
+  line-height: 50px;
+}
+
+.displayFlex {
+  display: flex;
+}
+
 .country {
   font-size: 18px;
   display: block;
