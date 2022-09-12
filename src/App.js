@@ -97,41 +97,41 @@ function App() {
                 Filter by Region
               </button>
               <div className='regionsList'>
-                <label
+                <span
                   id='africa'
                   className='region'
                   onClick={(e) => onSelectRegionList(e.target.id)}
                 >
                   Africa
-                </label>
-                <label
+                </span>
+                <span
                   id='america'
                   className='region'
                   onClick={(e) => onSelectRegionList(e.target.id)}
                 >
                   America
-                </label>
-                <label
+                </span>
+                <span
                   id='asia'
                   className='region'
                   onClick={(e) => onSelectRegionList(e.target.id)}
                 >
                   Asia
-                </label>
-                <label
+                </span>
+                <span
                   id='europe'
                   className='region'
                   onClick={(e) => onSelectRegionList(e.target.id)}
                 >
                   Europe
-                </label>
-                <label
+                </span>
+                <span
                   id='oceania'
                   className='region'
                   onClick={(e) => onSelectRegionList(e.target.id)}
                 >
                   Oceania
-                </label>
+                </span>
               </div>
             </div>
           </div>

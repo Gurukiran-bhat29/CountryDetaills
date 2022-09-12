@@ -10,16 +10,16 @@ function Counries({ data, callBack }) {
         src={data.flag}
         alt="CountryImage"
       />
-      <label className="fontBold country">{data.name}</label>
-      <label className="countryDetail">
+      <span className="fontBold country">{data.name}</span>
+      <span className="countryDetail">
         <span className="fontBold">Population</span>: {data.population}
-      </label>
-      <label className="countryDetail">
+      </span>
+      <span className="countryDetail">
         <span className="fontBold">Region</span>: {data.region}
-      </label>
-      <label className="countryDetail">
+      </span>
+      <span className="countryDetail">
         <span className="fontBold">Capital</span>: {data.capital}
-      </label>
+      </span>
     </div>
   )
 }
