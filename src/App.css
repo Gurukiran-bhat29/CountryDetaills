@@ -48,7 +48,7 @@
   padding: 4px;
   padding-left: 10px;
   color: white;
-  background-color: black;
+  background-color: rgb(64, 67, 67);
 }
 
 .regionsList span:hover {
@@ -69,8 +69,10 @@
   width: 22%;
   margin: 1.5%;
   padding-bottom: 1.5%;
-  background-color: rgb(245, 196, 161);
+  background-color: rgb(64, 67, 67);
   text-align: center;
+  color: white;
+  border-radius: 7%;
 }
 
 .image {
