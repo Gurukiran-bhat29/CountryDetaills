@@ -6,7 +6,6 @@ import SelectedCountry from './SelectedCountry';
 function App() {
   const [selectedCountry, setSelectedCountry] = useState('');
   const [countryDetails, setCountryDetails] = useState([]);
-  const [searchCountry, setSearchCountry] = useState('');
 
   const getSelectedCountry = (details) => {
     setSelectedCountry(details)
@@ -58,10 +57,25 @@ function App() {
     setCountryDetails(storeDetails);
   }
 
-  const getCountryOnSearch = (event) => {
-    setSearchCountry(event.target.value);
-    makeApiCall(`https://restcountries.com/v3.1/name/${event.target.value}`);
+  const debounce = (callBack, delay) => {
+    let timer;
+    return function (...args) {
+      const context = this;
+      if (timer) {
+        clearTimeout(timer);
+      }
+      timer = setTimeout(() => {
+        timer = null;
+        callBack.apply(context, args);
+      }, delay);
+    };
   }
+
+  const getCountryOnSearch = (value) => {
+    makeApiCall(`https://restcountries.com/v3.1/name/${value}`);
+  }
+
+  const optimizedFun = debounce(getCountryOnSearch, 500);
 
   const makeApiCall = (url) => {
     fetch(url)
@@ -89,8 +103,7 @@ function App() {
               className='inputField'
               type='text'
               placeholder='Search for a country...'
-              onChange={(event) => getCountryOnSearch(event)}
-              value={searchCountry}
+              onChange={(e) => optimizedFun(e.target.value)}
             />
             <div className='regionContainer'>
               <button className='button'>
