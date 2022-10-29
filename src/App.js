@@ -85,7 +85,8 @@ function App() {
 
   useEffect(() => {
     makeApiCall('https://restcountries.com/v3.1/all');
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
 
   const onSelectRegionList = (region) => {
     makeApiCall(`https://restcountries.com/v3.1/region/${region}`);
