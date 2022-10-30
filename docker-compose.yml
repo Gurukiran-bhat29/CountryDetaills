@@ -4,11 +4,9 @@ services:
     build:
       context: .
     container_name: country-details-app
-    image: app-dev
+    image: country-details
     ports:
       - "3001:3000"
-    # stdin_open:true | docker-compose file to start in an interactive mode.
-    stdin_open: true
     # We are mounting our code in a volume so that we can sync our changes with the container while developing.
     volumes:
       - ./:/app/
