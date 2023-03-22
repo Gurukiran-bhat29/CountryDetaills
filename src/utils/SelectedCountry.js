@@ -1,4 +1,4 @@
-import './App.css';
+import '../index.css';
 
 function selectedCountry({ details, onClickBack }) {
   const currencyLength = details.currencies.length - 1;

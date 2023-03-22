@@ -1,10 +1,9 @@
 
 import { useState, useEffect, lazy, Suspense } from 'react';
-import Counries from './Countries';
-import './App.css';
-import { filteredCountry } from './Constants';
+import Counries from './utils/Countries';
+import { filteredCountry } from './constants';
 
-const SelectedCountry = lazy(() => import('./SelectedCountry'));
+const SelectedCountry = lazy(() => import('./utils/SelectedCountry'));
 
 function App() {
   const [selectedCountry, setSelectedCountry] = useState('');
@@ -133,7 +132,7 @@ function App() {
             {countryDetails && countryDetails.map((data, index) => {
               return (
                 <Counries
-                  key={index}
+                  key={`country${index}`}
                   data={data}
                   callBack={(details) => getSelectedCountry(details)}
                 />

@@ -1,4 +1,4 @@
-import './App.css';
+import '../index.css';
 function Counries({ data, callBack }) {
   return (
     <div
