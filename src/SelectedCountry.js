@@ -46,7 +46,7 @@ function selectedCountry({ details, onClickBack }) {
             </label>
             <label className='displayBlock'>
               <span className='fontBold'>Currencies:</span>
-              {details.currencies.map((currency, index) =>
+              {details.currencies && details.currencies.map((currency, index) =>
                 currencyLength !== index
                   ? ` ${currency},`
                   : ` ${currency}`
@@ -54,7 +54,7 @@ function selectedCountry({ details, onClickBack }) {
             </label>
             <label className='displayBlock'>
               <span className='fontBold'>Languages:</span>
-              {details.languages.map((language, index) =>
+              {details.currencies && details.languages.map((language, index) =>
                 languageLength !== index
                   ? ` ${language},`
                   : ` ${language}`

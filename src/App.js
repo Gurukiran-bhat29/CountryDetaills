@@ -1,7 +1,16 @@
-import './App.css';
-import { useState, useEffect } from 'react';
+
+import { useState, useEffect, lazy, Suspense } from 'react';
 import Counries from './Countries';
-import SelectedCountry from './SelectedCountry';
+import './App.css';
+
+const SelectedCountry = lazy(() => import('./SelectedCountry'));
+const filteredCountry = [
+  { country: 'Africa', id: 'africa' },
+  { country: 'America', id: 'america' },
+  { country: 'Asia', id: 'asia' },
+  { country: 'Europe', id: 'europe' },
+  { country: 'Oceania', id: 'oceania' }
+];
 
 function App() {
   const [selectedCountry, setSelectedCountry] = useState('');
@@ -77,16 +86,16 @@ function App() {
 
   const optimizedFun = debounce(getCountryOnSearch, 500);
 
-  const makeApiCall = (url) => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => storeCountryDetails(data));
+  const makeApiCall = async (url) => {
+    const response = await fetch(url);
+    const jsonData = await response.json();
+    storeCountryDetails(jsonData);
   }
 
   useEffect(() => {
     makeApiCall('https://restcountries.com/v3.1/all');
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const onSelectRegionList = (region) => {
     makeApiCall(`https://restcountries.com/v3.1/region/${region}`);
@@ -111,41 +120,18 @@ function App() {
                 Filter by Region
               </button>
               <div className='regionsList'>
-                <span
-                  id='africa'
-                  className='region'
-                  onClick={(e) => onSelectRegionList(e.target.id)}
-                >
-                  Africa
-                </span>
-                <span
-                  id='america'
-                  className='region'
-                  onClick={(e) => onSelectRegionList(e.target.id)}
-                >
-                  America
-                </span>
-                <span
-                  id='asia'
-                  className='region'
-                  onClick={(e) => onSelectRegionList(e.target.id)}
-                >
-                  Asia
-                </span>
-                <span
-                  id='europe'
-                  className='region'
-                  onClick={(e) => onSelectRegionList(e.target.id)}
-                >
-                  Europe
-                </span>
-                <span
-                  id='oceania'
-                  className='region'
-                  onClick={(e) => onSelectRegionList(e.target.id)}
-                >
-                  Oceania
-                </span>
+                {filteredCountry.map((countries) => {
+                  return (
+                    <span
+                      key={countries.id}
+                      id={countries.id}
+                      className='region'
+                      onClick={(e) => onSelectRegionList(e.target.id)}
+                    >
+                      {countries.country}
+                    </span>
+                  )
+                })}
               </div>
             </div>
           </div>
@@ -162,10 +148,12 @@ function App() {
           </div>
         </div>
       ) : (
-        <SelectedCountry
-          details={selectedCountry}
-          onClickBack={() => setSelectedCountry('')}
-        />
+        <Suspense fallback={<div>Loading...!!!</div>}>
+          <SelectedCountry
+            details={selectedCountry}
+            onClickBack={() => setSelectedCountry('')}
+          />
+        </Suspense>
       )}
     </div>
   );
