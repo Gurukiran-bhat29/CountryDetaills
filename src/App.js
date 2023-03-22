@@ -2,15 +2,9 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 import Counries from './Countries';
 import './App.css';
+import { filteredCountry } from './Constants';
 
 const SelectedCountry = lazy(() => import('./SelectedCountry'));
-const filteredCountry = [
-  { country: 'Africa', id: 'africa' },
-  { country: 'America', id: 'america' },
-  { country: 'Asia', id: 'asia' },
-  { country: 'Europe', id: 'europe' },
-  { country: 'Oceania', id: 'oceania' }
-];
 
 function App() {
   const [selectedCountry, setSelectedCountry] = useState('');
