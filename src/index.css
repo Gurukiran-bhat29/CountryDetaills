@@ -128,9 +128,15 @@
   text-decoration: underline;
 }
 
+.backContainer {
+  display: flex;
+  margin-top: 2.5%;
+  justify-content: center;
+} 
+
 .back {
-  margin-top: 1.5%;
-  padding: 1.5%;
+  width: 12%;
+  padding: 1%;
   padding-left: 3%;
   padding-right: 3%;
   cursor: pointer;
@@ -140,6 +146,9 @@
 @media (min-width : 1320px) {
   .detailsContainer {
     margin-left: 3%;
+  }
+  .backContainer {
+    justify-content: flex-start;
   }
 }
 
@@ -162,6 +171,11 @@
   .selectedCountry {
     display: flex;
     flex-direction: column;
+    align-self: center;
+  }
+  .back {
+    width: 20%;
+    padding: 2%;
   }
 }
 

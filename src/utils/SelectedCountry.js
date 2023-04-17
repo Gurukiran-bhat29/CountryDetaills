@@ -55,12 +55,14 @@ function selectedCountry({ details, onClickBack }) {
           </div>
         </div>
       </div>
-      <button
-        className='back'
-        onClick={() => onClickBack()}
-      >
-        Back
-      </button>
+      <div className='backContainer'>
+        <button
+          className='back'
+          onClick={() => onClickBack()}
+        >
+          Back
+        </button>
+      </div>
     </div>
   )
 }
